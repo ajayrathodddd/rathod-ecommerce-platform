@@ -14,10 +14,7 @@ import {PRODUCT_LIST_FAIL,PRODUCT_LIST_SUCCESS,PRODUCT_LIST_REQUEST,PRODUCT_DETA
     PRODUCT_UPDATE_FAIL,
     PRODUCT_UPDATE_RESET,
 
-
-
-} from '../constants/ProductConstants'
-}from '../constants/ProductConstants'
+} from '../constants/productConstants'
 
 export const productListReducers =(state={products:[]},action)=>{
 
