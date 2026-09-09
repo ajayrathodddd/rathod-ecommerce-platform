@@ -17,6 +17,7 @@ import {PRODUCT_LIST_FAIL,PRODUCT_LIST_SUCCESS,PRODUCT_LIST_REQUEST,PRODUCT_DETA
 
 
 } from '../constants/ProductConstants'
+}from '../constants/ProductConstants'
 
 export const productListReducers =(state={products:[]},action)=>{
 
@@ -109,3 +110,4 @@ export const productDeleteReducers=(state={},action)=>{
 
     }
 }
+

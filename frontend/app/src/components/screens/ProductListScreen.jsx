@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../Loader'
 import Message from '../Message'
 import { listProducts,createProduct,deleteProduct } from '../../actions/ProductAction'
-import { PRODUCT_CREATE_RESET } from '../../constants/productConstants'
+import { PRODUCT_CREATE_RESET } from '../../constants/ProductConstants'
 import { useNavigate } from "react-router-dom";
 
 
