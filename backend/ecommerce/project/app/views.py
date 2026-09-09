@@ -25,12 +25,12 @@ from rest_framework import status
 @api_view(['GET'])
 def getRoutes(request):
     myapis = [
-       {
-           "products": 'http://127.0.0.1:8000/api/products/',
-           "product": 'http://127.0.0.1:8000/api/product/1/',
-           "login": "http://127.0.0.1:8000/api/users/login/",
-           "signup": "http://127.0.0.1:8000/api/users/register/",
-        } 
+        {
+            "products": request.build_absolute_uri("/api/products/"),
+            "product": request.build_absolute_uri("/api/product/1/"),
+            "login": request.build_absolute_uri("/api/users/login/"),
+            "signup": request.build_absolute_uri("/api/users/register/"),
+        }
     ]
     return Response(myapis)
 
