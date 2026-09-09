@@ -16,7 +16,7 @@ import {PRODUCT_LIST_FAIL,PRODUCT_LIST_SUCCESS,PRODUCT_LIST_REQUEST,PRODUCT_DETA
 
 
 
-} from '../constants/ProductConstants'
+} from '../constants/productConstants'
 
 export const productListReducers =(state={products:[]},action)=>{
 

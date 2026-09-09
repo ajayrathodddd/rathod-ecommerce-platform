@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import ProductScreen from "./screens/ProductScreen";
 // import axios from 'axios'
-import { listProducts } from "../actions/productActions";
+import { listProducts } from "../actions/ProductAction";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "./Loader";
 import Message from "./Message";
