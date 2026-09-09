@@ -6,3 +6,4 @@ djangorestframework-simplejwt==5.5.1
 Markdown==3.10.3
 Pillow==12.3.0
 gunicorn==23.0.0
+six==1.17.0
