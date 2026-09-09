@@ -4,7 +4,7 @@ import { Table, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../Loader'
 import Message from '../Message'
-import { listProducts,createProduct,deleteProduct } from '../../actions/productAction'
+import { listProducts,createProduct,deleteProduct } from '../../actions/productActions'
 import { PRODUCT_CREATE_RESET } from '../../constants/productConstants'
 import { useNavigate } from "react-router-dom";
 

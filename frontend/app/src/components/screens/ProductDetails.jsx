@@ -5,7 +5,7 @@ import { Row, Col, Image, ListGroup, Button, Card,Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../Loader";
 import Message from "../Message";
-import { listProductDetails } from "../../actions/productAction";
+import { listProductDetails } from "../../actions/productActions";
 
 
 
