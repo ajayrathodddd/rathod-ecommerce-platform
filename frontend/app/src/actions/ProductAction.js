@@ -17,7 +17,7 @@ import {
   PRODUCT_UPDATE_SUCCESS,
   PRODUCT_UPDATE_FAIL,
   PRODUCT_UPDATE_RESET,
-} from "../constants/ProductConstants";
+} from "../constants/productConstants";
 
 export const listProducts = () => async (dispatch) => {
   try {
