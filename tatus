@@ -1,0 +1,47 @@
+[1mdiff --git a/backend/ecommerce/project/project/settings.py b/backend/ecommerce/project/project/settings.py[m
+[1mindex cf64b64..a19cabb 100644[m
+[1m--- a/backend/ecommerce/project/project/settings.py[m
+[1m+++ b/backend/ecommerce/project/project/settings.py[m
+[36m@@ -9,6 +9,8 @@[m [mhttps://docs.djangoproject.com/en/5.0/topics/settings/[m
+ For the full list of settings and their values, see[m
+ https://docs.djangoproject.com/en/5.0/ref/settings/[m
+ """[m
+[32m+[m[32mimport os[m
+[32m+[m
+ import django[m
+ from django.utils.encoding import force_str[m
+ django.utils.encoding.force_text = force_str[m
+[36m@@ -22,12 +24,11 @@[m [mBASE_DIR = Path(__file__).resolve().parent.parent[m
+ # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/[m
+ [m
+ # SECURITY WARNING: keep the secret key used in production secret![m
+[31m-SECRET_KEY = 'django-insecure-9i_b=p+yz$&91rs#9u_c*+*%11vu#se3dmf%0@&-tr30ni!0(u'[m
+[32m+[m[32mSECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-local-development-key")[m
+ [m
+ # SECURITY WARNING: don't run with debug turned on in production![m
+[31m-DEBUG = True[m
+[31m-[m
+[31m-ALLOWED_HOSTS = [][m
+[32m+[m[32mDEBUG = os.environ.get("DEBUG", "True").lower() == "true"[m
+[32m+[m[32mALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")[m
+ [m
+ [m
+ # Application definition[m
+[36m@@ -199,4 +200,14 @@[m [mMEDIA_ROOT='static/images'[m
+ [m
+ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'[m
+ [m
+[31m-CORS_ALLOW_ALL_ORIGINS=True[m
+\ No newline at end of file[m
+[32m+[m[32mCORS_ALLOW_ALL_ORIGINS=True[m
+[32m+[m
+[32m+[m
+[32m+[m[32m# Production security settings[m
+[32m+[m[32mif not DEBUG:[m
+[32m+[m[32m    SECURE_SSL_REDIRECT = True[m
+[32m+[m[32m    SESSION_COOKIE_SECURE = True[m
+[32m+[m[32m    CSRF_COOKIE_SECURE = True[m
+[32m+[m[32m    SECURE_HSTS_SECONDS = 31536000[m
+[32m+[m[32m    SECURE_HSTS_INCLUDE_SUBDOMAINS = True[m
+[32m+[m[32m    SECURE_HSTS_PRELOAD = True[m
+\ No newline at end of file[m
