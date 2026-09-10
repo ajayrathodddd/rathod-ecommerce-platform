@@ -9,7 +9,10 @@ function ProductScreen({ product }) {
   return (
     <Card className="my-3 p-3 rounded h-100">
       <Link to={productId ? `/product/${productId}` : "#"}>
-        <Card.Img src={product?.image} variant="top" />
+        <Card.Img
+          src={`https://rathod-ecommerce-platform.onrender.com${product?.image}`}
+          variant="top"
+        />
       </Link>
 
       <Card.Body className="d-flex flex-column justify-content-between">
@@ -21,7 +24,8 @@ function ProductScreen({ product }) {
           </Link>
 
           <Card.Text as="div" className="my-2">
-            {product?.rating} from {product?.numReviews || product?.numreviews || 0} reviews
+            {product?.rating} from{" "}
+            {product?.numReviews || product?.numreviews || 0} reviews
           </Card.Text>
 
           <Card.Text as="h3" className="my-2">
@@ -29,8 +33,8 @@ function ProductScreen({ product }) {
           </Card.Text>
         </div>
 
-        <Link 
-          className="btn btn-outline-success mt-2" 
+        <Link
+          className="btn btn-outline-success mt-2"
           to={productId ? `/product/${productId}` : "#"}
         >
           View More
