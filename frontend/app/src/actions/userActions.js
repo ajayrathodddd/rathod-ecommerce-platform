@@ -45,11 +45,22 @@ export const signup = (fname, lname, email, password) => async (dispatch) => {
       },
       config,
     );
+    const userInfo = {
+      ...data,
+      token: data.token || data.access,
+    };
 
     dispatch({
       type: USER_SIGNUP_SUCCESS,
-      payload: data,
+      payload: userInfo,
     });
+
+    dispatch({
+      type: USER_LOGIN_SUCCESS,
+      payload: userInfo,
+    });
+
+    localStorage.setItem("userInfo", JSON.stringify(userInfo));
   } catch (error) {
     dispatch({
       type: USER_SIGNUP_FAIL,
