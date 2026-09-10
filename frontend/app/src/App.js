@@ -27,7 +27,7 @@ export default function App() {
         <Container>
           <Routes>
             {/* User & Auth Routes */}
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<LoginScreen />} />
             <Route path="/signup" element={<SignupScreen />} />
             <Route path="/login" element={<LoginScreen />} />
             <Route path="/profile" element={<ProfileScreen />} />
