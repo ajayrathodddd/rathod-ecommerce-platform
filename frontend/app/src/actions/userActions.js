@@ -36,14 +36,14 @@ export const signup = (fname, lname, email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/users/register/", // Fixed: added trailing slash at the end
+      "https://rathod-ecommerce-platform.onrender.com/api/users/register/", // Fixed: added trailing slash at the end
       {
         fname: fname,
         lname: lname,
         email: email,
         password: password,
       },
-      config
+      config,
     );
 
     dispatch({
@@ -60,6 +60,7 @@ export const signup = (fname, lname, email, password) => async (dispatch) => {
     });
   }
 };
+
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({
@@ -72,23 +73,29 @@ export const login = (email, password) => async (dispatch) => {
       },
     };
 
-    // 1. MAKE SURE THIS IS axios.post (NOT axios.get)
-    // 2. MAKE SURE IT HAS THE TRAILING SLASH: "/api/users/login/"
     const { data } = await axios.post(
-      "/api/users/login/",
+      "https://rathod-ecommerce-platform.onrender.com/api/users/login/",
       {
-        username: email, // Django expects 'username' (which holds the email value)
+        username: email,
         password: password,
       },
-      config
+      config,
     );
+
+    // Django SimpleJWT normally returns "access".
+    // Store it as "token" because the rest of this project
+    // expects userInfo.token.
+    const userInfo = {
+      ...data,
+      token: data.token || data.access,
+    };
 
     dispatch({
       type: USER_LOGIN_SUCCESS,
-      payload: data,
+      payload: userInfo,
     });
 
-    localStorage.setItem("userInfo", JSON.stringify(data));
+    localStorage.setItem("userInfo", JSON.stringify(userInfo));
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,
@@ -191,7 +198,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
     const { data } = await axios.put(
       `/api/users/update/${user._id}/`,
       user,
-      config
+      config,
     );
 
     dispatch({ type: USER_UPDATE_SUCCESS });
@@ -262,7 +269,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
     const { data } = await axios.put(
       "/api/users/profile/update/",
       user,
-      config
+      config,
     );
 
     dispatch({

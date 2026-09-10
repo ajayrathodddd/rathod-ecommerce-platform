@@ -27,11 +27,11 @@ export default function App() {
         <Container>
           <Routes>
             {/* User & Auth Routes */}
-            <Route path="/" element={<LoginScreen />} />
+            <Route path="/" element={<LoginScreen />} />{" "}
+            <Route path="/home" element={<Home />} />
             <Route path="/signup" element={<SignupScreen />} />
             <Route path="/login" element={<LoginScreen />} />
             <Route path="/profile" element={<ProfileScreen />} />
-
             {/* Product & Shopping Routes */}
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/cart/:id?" element={<CartScreen />} />
@@ -39,12 +39,14 @@ export default function App() {
             <Route path="/placeorder" element={<PlaceOrderScreen />} />
             <Route path="/payment" element={<PaymentScreen />} />
             <Route path="/order/:id" element={<OrderScreen />} />
-
             {/* Admin Routes */}
             <Route path="/admin/userlist" element={<UserListScreen />} />
             <Route path="/admin/user/:id/edit" element={<UserEditScreen />} />
             <Route path="/admin/productList" element={<ProductListScreen />} />
-            <Route path="/admin/product/:id/edit" element={<ProductEditScreen />} />
+            <Route
+              path="/admin/product/:id/edit"
+              element={<ProductEditScreen />}
+            />
             <Route path="/admin/orderlist" element={<OrderListScreen />} />
           </Routes>
         </Container>

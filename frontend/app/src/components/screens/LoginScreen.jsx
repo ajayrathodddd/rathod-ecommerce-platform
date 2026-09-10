@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { login } from '../../actions/userActions';
+import React, { useState, useEffect } from "react";
+import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
+import { login } from "../../actions/userActions";
 function LoginScreen() {
   const [formValues, setFormValues] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const [formErrors, setFormErrors] = useState({
@@ -19,7 +19,7 @@ function LoginScreen() {
   const location = useLocation();
 
   // Redirect target (defaults to home page "/")
-  const redirect = location.search ? location.search.split('=')[1] : '/';
+  const redirect = location.search ? location.search.split("=")[1] : "/";
 
   // Read login state from Redux store
   const userLogin = useSelector((state) => state.userLogin);
@@ -28,7 +28,7 @@ function LoginScreen() {
   // REDIRECT EFFECT: When userInfo becomes available, navigate to Home
   useEffect(() => {
     if (userInfo) {
-      navigate(redirect);
+      navigate("/home");
     }
   }, [navigate, userInfo, redirect]);
 
@@ -44,19 +44,19 @@ function LoginScreen() {
     let errorMessage = null;
 
     switch (name) {
-      case 'email': {
+      case "email": {
         if (!value) {
-          errorMessage = 'Email is required.';
+          errorMessage = "Email is required.";
         } else {
           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!emailRegex.test(value)) errorMessage = 'Invalid email format.';
+          if (!emailRegex.test(value)) errorMessage = "Invalid email format.";
         }
         break;
       }
 
-      case 'password':
+      case "password":
         if (!value) {
-          errorMessage = 'Password is required.';
+          errorMessage = "Password is required.";
         }
         break;
 
@@ -69,8 +69,8 @@ function LoginScreen() {
 
   const isFormValid = () => {
     return (
-      formValues.email !== '' &&
-      formValues.password !== '' &&
+      formValues.email !== "" &&
+      formValues.password !== "" &&
       formErrors.email === null &&
       formErrors.password === null
     );
@@ -103,7 +103,7 @@ function LoginScreen() {
                 placeholder="Enter your Email"
                 value={formValues.email}
                 onChange={handleChange}
-                isValid={formValues.email !== '' && formErrors.email === null}
+                isValid={formValues.email !== "" && formErrors.email === null}
                 isInvalid={!!formErrors.email}
               />
               {formErrors.email && (
@@ -121,7 +121,9 @@ function LoginScreen() {
                 placeholder="••••••"
                 value={formValues.password}
                 onChange={handleChange}
-                isValid={formValues.password !== '' && formErrors.password === null}
+                isValid={
+                  formValues.password !== "" && formErrors.password === null
+                }
                 isInvalid={!!formErrors.password}
               />
               {formErrors.password && (
